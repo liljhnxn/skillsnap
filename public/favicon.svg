@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <rect width="32" height="32" rx="8" fill="#111317" />
+  <rect x="1" y="1" width="30" height="30" rx="7" fill="none" stroke="#272c38" stroke-width="1.5" />
+  
+  <!-- Outer glow -->
+  <circle cx="16" cy="16" r="10" fill="#7c3aed" opacity="0.15" />
+  
+  <!-- Sparkles / Snap Icon -->
+  <path d="M16 6 L17.8 12.2 C18.3 13.7 19.5 14.9 21 15.4 L26 16 L21 16.6 C19.5 17.1 18.3 18.3 17.8 19.8 L16 26 L14.2 19.8 C13.7 18.3 12.5 17.1 11 16.6 L6 16 L11 15.4 C12.5 14.9 13.7 13.7 14.2 12.2 Z" 
+        fill="#8b5cf6" 
+        stroke="#a78bfa" 
+        stroke-width="0.8" 
+        stroke-linejoin="round" />
+        
+  <!-- Center Star Core -->
+  <circle cx="16" cy="16" r="2" fill="#f3f4f6" />
+</svg>
+
