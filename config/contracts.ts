@@ -1,7 +1,9 @@
 import { Address } from "viem";
 
-export const SKILLSNAP_CONTRACT_ADDRESS: Address | undefined =
-  (process.env.NEXT_PUBLIC_SKILLSNAP_CONTRACT_ADDRESS as Address) || undefined;
+// Default to the verified SkillSnap deployment on Botchain Mainnet
+export const SKILLSNAP_CONTRACT_ADDRESS: Address =
+  (process.env.NEXT_PUBLIC_SKILLSNAP_CONTRACT_ADDRESS as Address) ||
+  "0x243AE8D5F7AFa98d00623232386F2e2fb2464F86";
 
 export const SKILLSNAP_ABI = [
   {

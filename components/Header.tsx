@@ -3,7 +3,9 @@
 import React, { useState } from "react";
 import { useAccount, useConnect, useDisconnect, useSwitchChain } from "wagmi";
 import { botchainMainnet } from "@/config/botchain";
+import { SKILLSNAP_CONTRACT_ADDRESS } from "@/config/contracts";
 import { shortenAddress } from "@/lib/utils";
+import Image from "next/image";
 import {
   Wallet,
   LogOut,
@@ -13,6 +15,8 @@ import {
   Layers,
   Sparkles,
   ExternalLink,
+  Globe,
+  FileCode2,
 } from "lucide-react";
 
 export function Header() {
@@ -45,9 +49,9 @@ export function Header() {
   };
 
   return (
-    <header className="border-b border-charcoal-800 bg-charcoal-900/80 backdrop-blur-md sticky top-0 z-40">
+    <header className="border-b border-charcoal-800 bg-charcoal-900/90 backdrop-blur-md sticky top-0 z-40">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-        {/* Logo */}
+        {/* Left: SkillSnap Logo + Ecosystem Branding */}
         <div className="flex items-center gap-3">
           <div className="w-9 h-9 rounded-xl bg-brand-purple-deep border border-brand-purple/30 flex items-center justify-center shadow-inner">
             <Sparkles className="w-5 h-5 text-brand-purple-soft" />
@@ -57,7 +61,7 @@ export function Header() {
               <span className="font-semibold text-lg tracking-tight text-white">
                 SkillSnap
               </span>
-              <span className="hidden sm:inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-medium bg-charcoal-800 text-gray-400 border border-charcoal-700">
+              <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-medium bg-emerald-950/60 text-emerald-300 border border-emerald-800/50">
                 Mainnet
               </span>
             </div>
@@ -67,10 +71,65 @@ export function Header() {
           </div>
         </div>
 
-        {/* Network & Wallet Controls */}
+        {/* Center / Navigation: BOT Chain Official Website & Explorer */}
+        <nav className="hidden lg:flex items-center gap-2">
+          <a
+            href="https://botchain.ai"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-charcoal-850 hover:bg-charcoal-800 border border-charcoal-700/80 text-xs text-gray-300 hover:text-white transition-all shadow-sm group"
+            title="Official BOT Chain Website"
+          >
+            <div className="w-4 h-4 rounded-sm overflow-hidden relative shrink-0">
+              <Image
+                src="/botchain-logo.png"
+                alt="BOT Chain Logo"
+                width={16}
+                height={16}
+                className="object-contain"
+              />
+            </div>
+            <span className="font-medium">BOT Chain Website</span>
+            <ExternalLink className="w-3 h-3 text-gray-400 group-hover:text-emerald-400 transition-colors" />
+          </a>
+
+          <a
+            href="https://scan.botchain.ai"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-charcoal-850 hover:bg-charcoal-800 border border-charcoal-700/80 text-xs text-gray-300 hover:text-white transition-all shadow-sm group"
+            title="BOT Chain Block Explorer"
+          >
+            <div className="w-4 h-4 rounded-sm overflow-hidden relative shrink-0">
+              <Image
+                src="/botchain-logo.png"
+                alt="BOT Chain Logo"
+                width={16}
+                height={16}
+                className="object-contain"
+              />
+            </div>
+            <span className="font-medium">BOT Chain Explorer</span>
+            <ExternalLink className="w-3 h-3 text-gray-400 group-hover:text-emerald-400 transition-colors" />
+          </a>
+
+          <a
+            href={`https://scan.botchain.ai/address/${SKILLSNAP_CONTRACT_ADDRESS}#code`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-charcoal-850 hover:bg-charcoal-800 border border-charcoal-700/80 text-xs text-purple-300 hover:text-purple-200 transition-all shadow-sm group"
+            title="Verified Mainnet Contract"
+          >
+            <FileCode2 className="w-3.5 h-3.5 text-brand-purple-soft" />
+            <span className="font-mono text-[11px] font-medium">Contract: {shortenAddress(SKILLSNAP_CONTRACT_ADDRESS)}</span>
+            <ExternalLink className="w-3 h-3 text-gray-400 group-hover:text-purple-200 transition-colors" />
+          </a>
+        </nav>
+
+        {/* Right: Network Indicator & Wallet Connect */}
         <div className="flex items-center gap-3">
-          {/* Botchain Network Indicator */}
-          <div className="hidden md:flex items-center gap-2 px-2.5 py-1 rounded-lg bg-charcoal-850 border border-charcoal-700 text-xs">
+          {/* BOT Chain Mainnet Indicator */}
+          <div className="hidden sm:flex items-center gap-2 px-2.5 py-1.5 rounded-xl bg-charcoal-850 border border-charcoal-700 text-xs">
             <span
               className={`w-2 h-2 rounded-full ${
                 !isConnected
@@ -80,8 +139,8 @@ export function Header() {
                   : "bg-emerald-400"
               }`}
             />
-            <span className="text-gray-300 font-mono text-[11px]">
-              {isWrongNetwork ? "Wrong Network" : "Botchain Mainnet"}
+            <span className="text-gray-200 font-mono text-[11px]">
+              {isWrongNetwork ? "Wrong Network" : "Botchain (677)"}
             </span>
           </div>
 
