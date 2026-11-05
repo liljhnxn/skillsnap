@@ -8,7 +8,7 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "SkillSnap — Decentralized Skill Directory",
   description:
-    "Show your skill. Make your mark. A simple Web3 skill directory on Botchain Testnet.",
+    "Show your skill. Make your mark. A simple Web3 skill directory on Botchain Mainnet.",
   icons: {
     icon: [
       { url: "/favicon.svg", type: "image/svg+xml" },

@@ -21,8 +21,6 @@ export const botchainMainnet = defineChain({
       url: "https://scan.botchain.ai",
     },
   },
-  testnet: false,
 });
 
-// Backward compatibility alias
 export const botchain = botchainMainnet;

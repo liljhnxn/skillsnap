@@ -11,7 +11,7 @@ async function main() {
   const network = await ethers.provider.getNetwork();
 
   console.log("=========================================");
-  console.log(`Deploying SkillSnap Contract to Chain ID: ${network.chainId}`);
+  console.log(`Deploying SkillSnap Contract to Botchain Mainnet (Chain ID: ${network.chainId})`);
   console.log("Deployer address:", deployer ? deployer.address : "None found!");
 
   if (!deployer) {
@@ -31,7 +31,6 @@ async function main() {
   console.log("Submitting deployment transaction with optimized gas parameters...");
   const SkillSnapFactory = await ethers.getContractFactory("SkillSnap");
   
-  // Deploy with exact gasPrice to ensure no overpayment
   const skillSnap = await SkillSnapFactory.deploy({
     gasPrice: feeData.gasPrice ?? undefined,
   });
@@ -43,12 +42,10 @@ async function main() {
   await skillSnap.waitForDeployment();
 
   const contractAddress = await skillSnap.getAddress();
-  const explorerUrl = Number(network.chainId) === 677 
-    ? `https://scan.botchain.ai/address/${contractAddress}` 
-    : `https://scan.bohr.life/address/${contractAddress}`;
+  const explorerUrl = `https://scan.botchain.ai/address/${contractAddress}`;
 
   console.log("-----------------------------------------");
-  console.log("SkillSnap successfully deployed on Mainnet!");
+  console.log("SkillSnap successfully deployed on Botchain Mainnet!");
   console.log("Contract Address:", contractAddress);
   console.log("Block Explorer:", explorerUrl);
   console.log("-----------------------------------------");

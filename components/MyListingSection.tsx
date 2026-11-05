@@ -98,7 +98,7 @@ export function MyListingSection({
       ) : (
         <div className="py-4 text-center space-y-2">
           <p className="text-xs text-gray-400">
-            You haven't listed a skill yet. Make your mark on Botchain Testnet!
+            You haven't listed a skill yet. Make your mark on Botchain Mainnet!
           </p>
           <button
             onClick={onOpenCreate}

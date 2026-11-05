@@ -2,22 +2,23 @@
 
 > **Tagline:** Show your skill. Make your mark.
 
-SkillSnap is a simple, decentralized skill directory built on **Botchain Testnet**. It enables developers, designers, creators, and builders to showcase the skills they offer on-chain and discover skills offered by other wallets.
+SkillSnap is a simple, decentralized skill directory built on **Botchain Mainnet**. It enables developers, designers, creators, and builders to showcase the skills they offer on-chain and discover skills offered by other wallets.
 
 ---
 
-## 1. Network Configuration (Botchain Testnet)
+## 1. Network Configuration (Botchain Mainnet)
 
-SkillSnap runs on **Botchain Testnet**. Add the network to your Web3 wallet (e.g. MetaMask):
+SkillSnap runs on **Botchain Mainnet**. Network parameters:
 
 | Parameter | Value |
 |---|---|
-| **Network Name** | Botchain Testnet |
-| **Chain ID** | `968` |
-| **RPC URL** | `https://rpc.bohr.life` |
+| **Network Name** | Botchain |
+| **Chain ID** | `677` |
+| **RPC URL** | `https://rpc.botchain.ai` |
 | **Currency Symbol** | `BOT` |
 | **Decimals** | `18` |
-| **Block Explorer** | `https://scan.bohr.life` |
+| **Block Explorer** | `https://scan.botchain.ai` |
+| **Official Website** | `https://botchain.ai` |
 
 ---
 
@@ -40,24 +41,24 @@ SkillSnap runs on **Botchain Testnet**. Add the network to your Web3 wallet (e.g
 ├── test/
 │   └── SkillSnap.test.ts      # Automated contract test suite
 ├── scripts/
-│   └── deploy.ts              # Hardhat deployment script for Botchain
+│   └── deploy.ts              # Hardhat deployment script for Botchain Mainnet
 ├── app/
 │   ├── globals.css            # Custom charcoal & muted purple styles
 │   ├── layout.tsx             # Root layout and fonts
 │   ├── page.tsx               # Single-page interface
 │   └── providers.tsx          # Wagmi & React Query client providers
 ├── components/
-│   ├── Header.tsx             # Navigation, network badge & wallet button
+│   ├── Header.tsx             # Navigation, Mainnet network badge & wallet button
 │   ├── Hero.tsx               # Hero section & CTA
 │   ├── MyListingSection.tsx   # View, edit & remove active listing
 │   ├── SkillDirectory.tsx     # Client-side search & category filtering
-│   ├── SkillCard.tsx          # Card with copy wallet & explorer link
+│   ├── SkillCard.tsx          # Card with copy wallet & BotchainScan explorer link
 │   ├── ListingFormModal.tsx   # Modal for create & update listing
 │   ├── RemoveListingModal.tsx # Confirmation modal for removing listing
 │   ├── NetworkBanner.tsx      # Wrong network & missing config alerts
-│   └── Footer.tsx             # Legal disclaimer & explorer link
+│   └── Footer.tsx             # BOT Chain website and explorer ecosystem links
 ├── config/
-│   ├── botchain.ts            # Viem custom chain definition for Botchain
+│   ├── botchain.ts            # Viem custom chain definition for Botchain Mainnet
 │   ├── contracts.ts           # SkillSnap ABI and type definitions
 │   └── wagmi.ts               # Wagmi connector configuration
 ├── hardhat.config.ts          # Hardhat configuration
@@ -71,8 +72,8 @@ SkillSnap runs on **Botchain Testnet**. Add the network to your Web3 wallet (e.g
 
 ### Prerequisites
 
-- Node.js `v18+` or `v20+` (compatible with modern Node releases)
-- npm or pnpm
+- Node.js `v18+` or `v20+`
+- npm
 - MetaMask browser extension
 
 ### Installation
@@ -92,11 +93,11 @@ cp .env.example .env.local
 Set the following variables in `.env.local`:
 
 ```env
-# Set after deploying your SkillSnap contract:
-NEXT_PUBLIC_SKILLSNAP_CONTRACT_ADDRESS=0xYourContractAddressHere
+# Verified SkillSnap contract on Botchain Mainnet:
+NEXT_PUBLIC_SKILLSNAP_CONTRACT_ADDRESS=0x243AE8D5F7AFa98d00623232386F2e2fb2464F86
 
-# Optional: custom RPC if needed
-NEXT_PUBLIC_BOTCHAIN_RPC_URL=https://rpc.bohr.life
+# Botchain Mainnet RPC URL
+NEXT_PUBLIC_BOTCHAIN_RPC_URL=https://rpc.botchain.ai
 
 # Deployer private key (ONLY needed for contract deployment, never commit to git)
 DEPLOYER_PRIVATE_KEY=your_private_key_here
@@ -104,7 +105,7 @@ DEPLOYER_PRIVATE_KEY=your_private_key_here
 
 ---
 
-## 5. Smart Contract Compilation & Testing
+## 5. Smart Contract Compilation & Deployment
 
 To compile the smart contract:
 
@@ -112,33 +113,24 @@ To compile the smart contract:
 npm run contract:compile
 ```
 
-To run the automated test suite (verifying creation, updates, input validation, duplicate prevention, unauthorized access protection, and events):
+To run the automated test suite:
 
 ```bash
 npm run contract:test
 ```
 
----
-
-## 6. Smart Contract Deployment
-
-1. Fund your deployer wallet with testnet `BOT` tokens on Botchain Testnet.
-2. Ensure `DEPLOYER_PRIVATE_KEY` is set in `.env.local` or environment variables.
-3. Run the deployment script:
+To deploy to Botchain Mainnet:
 
 ```bash
 npm run contract:deploy
 ```
 
-4. The deployment script will output the deployed contract address and BohrScan block explorer link.
-5. Copy the address into `.env.local`:
-   ```env
-   NEXT_PUBLIC_SKILLSNAP_CONTRACT_ADDRESS=0x...
-   ```
+Verified Mainnet contract:
+`https://scan.botchain.ai/address/0x243AE8D5F7AFa98d00623232386F2e2fb2464F86#code`
 
 ---
 
-## 7. Running the Frontend
+## 6. Running the Frontend
 
 To start the local development server:
 
@@ -157,22 +149,14 @@ npm run start
 
 ---
 
-## 8. Gas Requirements & On-Chain Actions
+## 7. Official Ecosystem Links
 
-SkillSnap strictly interacts with the smart contract for state changes:
-
-| Action | Gas Required? | Details |
-|---|---|---|
-| **Browsing Skills** | **No (Free)** | Read-only view call from Botchain RPC |
-| **Search & Filtering** | **No (Free)** | Executed client-side on fetched listings |
-| **Connecting Wallet** | **No (Free)** | Client-side wallet handshake |
-| **Create Listing** | **Yes (Testnet BOT)** | Writes listing data to smart contract |
-| **Update Listing** | **Yes (Testnet BOT)** | Updates on-chain listing struct |
-| **Remove Listing** | **Yes (Testnet BOT)** | Marks listing as inactive on-chain |
+* **BOT Chain Website:** [https://botchain.ai](https://botchain.ai)
+* **BOT Chain Explorer:** [https://scan.botchain.ai](https://scan.botchain.ai)
+* **Verified Contract:** [0x243AE8D5F7AFa98d00623232386F2e2fb2464F86](https://scan.botchain.ai/address/0x243AE8D5F7AFa98d00623232386F2e2fb2464F86#code)
 
 ---
 
-## 9. Disclaimer
+## 8. Disclaimer
 
 SkillSnap is a decentralized skill directory, not a job marketplace, escrow platform, or hiring service. Listings are user-submitted and skills are not independently verified. Users must exercise their own due diligence.
-

@@ -173,7 +173,7 @@ export function SkillDirectory({
           <p className="text-xs text-gray-400 max-w-sm mx-auto">
             {searchQuery || selectedCategory !== "All"
               ? "Try adjusting your search keywords or clear your category filter."
-              : "Be the first to list your skill on Botchain Testnet."}
+              : "Be the first to list your skill on Botchain Mainnet."}
           </p>
           <div className="pt-2">
             {searchQuery || selectedCategory !== "All" ? (

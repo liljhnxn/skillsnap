@@ -9,7 +9,7 @@
     "lint": "next lint",
     "contract:compile": "hardhat compile",
     "contract:test": "hardhat test",
-    "contract:deploy": "hardhat run scripts/deploy.ts --network botchainTestnet"
+    "contract:deploy": "hardhat run scripts/deploy.ts --network botchainMainnet"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.59.0",

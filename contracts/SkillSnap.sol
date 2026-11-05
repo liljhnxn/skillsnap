@@ -3,7 +3,7 @@ pragma solidity ^0.8.20;
 
 /**
  * @title SkillSnap
- * @notice Simple, decentralized skill directory for Botchain Testnet.
+ * @notice Simple, decentralized skill directory for Botchain Mainnet.
  * @dev Allows wallets to publish, update, and remove a single active skill listing.
  * Tagline: Show your skill. Make your mark.
  */
