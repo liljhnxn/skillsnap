@@ -21,23 +21,37 @@ const config: HardhatUserConfig = {
     settings: {
       optimizer: {
         enabled: true,
-        runs: 200,
+        runs: 500,
       },
     },
   },
   networks: {
     hardhat: {},
+    botchainMainnet: {
+      url: "https://rpc.botchain.ai",
+      chainId: 677,
+      accounts: DEPLOYER_PRIVATE_KEY ? [DEPLOYER_PRIVATE_KEY] : [],
+    },
     botchainTestnet: {
-      url: process.env.BOTCHAIN_RPC_URL || process.env.NEXT_PUBLIC_BOTCHAIN_RPC_URL || "https://rpc.bohr.life",
+      url: "https://rpc.bohr.life",
       chainId: 968,
       accounts: DEPLOYER_PRIVATE_KEY ? [DEPLOYER_PRIVATE_KEY] : [],
     },
   },
   etherscan: {
     apiKey: {
+      botchainMainnet: "empty",
       botchainTestnet: "empty",
     },
     customChains: [
+      {
+        network: "botchainMainnet",
+        chainId: 677,
+        urls: {
+          apiURL: "https://scan.botchain.ai/api",
+          browserURL: "https://scan.botchain.ai",
+        },
+      },
       {
         network: "botchainTestnet",
         chainId: 968,

@@ -20,18 +20,18 @@ export function Footer() {
 
           <div className="flex items-center gap-4 text-[11px]">
             <a
-              href="https://scan.bohr.life"
+              href="https://scan.botchain.ai"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-white transition-colors flex items-center gap-1"
             >
-              <span>Botchain Explorer (BohrScan)</span>
+              <span>Botchain Explorer</span>
               <ExternalLink className="w-3 h-3" />
             </a>
             <span className="text-charcoal-700">|</span>
             <span className="flex items-center gap-1.5 font-mono text-[11px] text-gray-400">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-              Chain ID: 968
+              Chain ID: 677
             </span>
           </div>
         </div>
@@ -51,4 +51,3 @@ export function Footer() {
     </footer>
   );
 }
-

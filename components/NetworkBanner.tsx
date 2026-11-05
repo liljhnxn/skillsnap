@@ -2,7 +2,7 @@
 
 import React from "react";
 import { useAccount, useSwitchChain } from "wagmi";
-import { botchainTestnet } from "@/config/botchain";
+import { botchainMainnet } from "@/config/botchain";
 import { SKILLSNAP_CONTRACT_ADDRESS } from "@/config/contracts";
 import { AlertCircle, AlertTriangle, ArrowRight, Network } from "lucide-react";
 
@@ -10,7 +10,7 @@ export function NetworkBanner() {
   const { isConnected, chainId } = useAccount();
   const { switchChain, isPending: isSwitching } = useSwitchChain();
 
-  const isWrongNetwork = isConnected && chainId !== botchainTestnet.id;
+  const isWrongNetwork = isConnected && chainId !== botchainMainnet.id;
   const isContractMissing = !SKILLSNAP_CONTRACT_ADDRESS;
 
   if (!isContractMissing && !isWrongNetwork) {
@@ -43,11 +43,11 @@ export function NetworkBanner() {
             <AlertTriangle className="w-4 h-4 text-purple-400 shrink-0" />
             <span>
               You are connected to an unsupported network. Please switch to{" "}
-              <strong>Botchain Testnet</strong> (Chain ID: 968).
+              <strong>Botchain Mainnet</strong> (Chain ID: 677).
             </span>
           </div>
           <button
-            onClick={() => switchChain({ chainId: botchainTestnet.id })}
+            onClick={() => switchChain({ chainId: botchainMainnet.id })}
             disabled={isSwitching}
             className="inline-flex items-center gap-1.5 px-3 py-1 bg-purple-600 hover:bg-purple-500 disabled:opacity-50 text-white rounded text-xs font-medium transition-colors shrink-0 shadow-sm"
           >
@@ -60,4 +60,3 @@ export function NetworkBanner() {
     </div>
   );
 }
-

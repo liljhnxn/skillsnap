@@ -116,11 +116,11 @@ export function SkillCard({ listing, isOwner, onEdit }: SkillCardProps) {
             )}
           </button>
           <a
-            href={`https://scan.bohr.life/address/${listing.owner}`}
+            href={`https://scan.botchain.ai/address/${listing.owner}`}
             target="_blank"
             rel="noopener noreferrer"
             className="p-1 rounded hover:bg-charcoal-750 text-gray-400 hover:text-white transition-colors"
-            title="View on BohrScan Explorer"
+            title="View on BotchainScan Explorer"
           >
             <ExternalLink className="w-3 h-3" />
           </a>

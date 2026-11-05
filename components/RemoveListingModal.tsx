@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { useAccount, useWriteContract, useWaitForTransactionReceipt } from "wagmi";
 import { SKILLSNAP_ABI, SKILLSNAP_CONTRACT_ADDRESS } from "@/config/contracts";
-import { botchainTestnet } from "@/config/botchain";
+import { botchainMainnet } from "@/config/botchain";
 import {
   AlertTriangle,
   Loader2,
@@ -25,7 +25,7 @@ export function RemoveListingModal({
   onSuccess,
 }: RemoveListingModalProps) {
   const { isConnected, chainId } = useAccount();
-  const isWrongNetwork = isConnected && chainId !== botchainTestnet.id;
+  const isWrongNetwork = isConnected && chainId !== botchainMainnet.id;
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
   const {
@@ -62,7 +62,7 @@ export function RemoveListingModal({
       return;
     }
     if (!isConnected || isWrongNetwork) {
-      setErrorMsg("Wallet not connected to Botchain Testnet.");
+      setErrorMsg("Wallet not connected to Botchain Mainnet.");
       return;
     }
 
@@ -118,12 +118,12 @@ export function RemoveListingModal({
               {txHash && (
                 <div className="pt-2">
                   <a
-                    href={`https://scan.bohr.life/tx/${txHash}`}
+                    href={`https://scan.botchain.ai/tx/${txHash}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-1.5 text-xs text-brand-purple-soft hover:underline"
                   >
-                    <span>View on BohrScan</span>
+                    <span>View on BotchainScan</span>
                     <ExternalLink className="w-3.5 h-3.5" />
                   </a>
                 </div>

@@ -91,3 +91,4 @@ SkillSnap solves these problems by providing:
 * **Smart Contract (Verified):** [`0x327d72aCfD9cA960A69F8e332beE82fb7D19A562`](https://scan.bohr.life/address/0x327d72aCfD9cA960A69F8e332beE82fb7D19A562#code)
 * **GitHub Repository:** [https://github.com/liljhnxn/skillsnap](https://github.com/liljhnxn/skillsnap)
 * **Botchain Testnet Explorer:** [https://scan.bohr.life](https://scan.bohr.life)
+

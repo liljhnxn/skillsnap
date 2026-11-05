@@ -9,7 +9,7 @@ import {
   ListingData,
   SkillCategory,
 } from "@/config/contracts";
-import { botchainTestnet } from "@/config/botchain";
+import { botchainMainnet } from "@/config/botchain";
 import {
   X,
   Sparkles,
@@ -34,7 +34,7 @@ export function ListingFormModal({
   onSuccess,
 }: ListingFormModalProps) {
   const { isConnected, chainId } = useAccount();
-  const isWrongNetwork = isConnected && chainId !== botchainTestnet.id;
+  const isWrongNetwork = isConnected && chainId !== botchainMainnet.id;
 
   const isEditing = Boolean(existingListing && existingListing.isActive);
 
@@ -121,7 +121,7 @@ export function ListingFormModal({
     }
 
     if (isWrongNetwork) {
-      setFormError("Please switch your wallet to Botchain Testnet.");
+      setFormError("Please switch your wallet to Botchain Mainnet.");
       return;
     }
 
@@ -201,17 +201,17 @@ export function ListingFormModal({
                 {isEditing ? "Skill Updated!" : "Skill Listed Successfully!"}
               </h3>
               <p className="text-xs text-gray-400 max-w-sm mx-auto">
-                Your listing has been confirmed on Botchain Testnet.
+                Your listing has been confirmed on Botchain Mainnet.
               </p>
               {txHash && (
                 <div className="pt-2">
                   <a
-                    href={`https://scan.bohr.life/tx/${txHash}`}
+                    href={`https://scan.botchain.ai/tx/${txHash}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-1.5 text-xs text-brand-purple-soft hover:underline"
                   >
-                    <span>View transaction on BohrScan</span>
+                    <span>View transaction on BotchainScan</span>
                     <ExternalLink className="w-3.5 h-3.5" />
                   </a>
                 </div>
@@ -325,7 +325,7 @@ export function ListingFormModal({
 
               {/* Privacy Notice */}
               <p className="text-[11px] text-gray-400">
-                Skills are published immutably on Botchain Testnet with your
+                Skills are published immutably on Botchain Mainnet with your
                 connected wallet as the owner.
               </p>
 

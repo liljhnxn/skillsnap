@@ -23,7 +23,7 @@ export function Hero({
         {/* Subtle pill badge */}
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-charcoal-800/80 border border-charcoal-700/80 text-xs text-gray-300 mb-6">
           <Sparkles className="w-3.5 h-3.5 text-brand-purple-soft" />
-          <span>Web3 Directory on Botchain Testnet</span>
+          <span>Web3 Directory on Botchain Mainnet</span>
         </div>
 
         {/* Heading */}

@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { useAccount, useConnect, useDisconnect, useSwitchChain } from "wagmi";
-import { botchainTestnet } from "@/config/botchain";
+import { botchainMainnet } from "@/config/botchain";
 import { shortenAddress } from "@/lib/utils";
 import {
   Wallet,
@@ -23,7 +23,7 @@ export function Header() {
   const [copied, setCopied] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const isWrongNetwork = isConnected && chainId !== botchainTestnet.id;
+  const isWrongNetwork = isConnected && chainId !== botchainMainnet.id;
 
   const handleCopy = () => {
     if (address) {
@@ -34,14 +34,13 @@ export function Header() {
   };
 
   const handleConnect = () => {
-    // Find MetaMask connector or fallback to first available
     const mmConnector =
       connectors.find((c) => c.id === "metaMaskSDK" || c.id === "metaMask") ||
       connectors.find((c) => c.id === "injected") ||
       connectors[0];
 
     if (mmConnector) {
-      connect({ connector: mmConnector, chainId: botchainTestnet.id });
+      connect({ connector: mmConnector, chainId: botchainMainnet.id });
     }
   };
 
@@ -59,7 +58,7 @@ export function Header() {
                 SkillSnap
               </span>
               <span className="hidden sm:inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-medium bg-charcoal-800 text-gray-400 border border-charcoal-700">
-                Directory
+                Mainnet
               </span>
             </div>
             <p className="text-[11px] text-gray-400 hidden sm:block">
@@ -82,7 +81,7 @@ export function Header() {
               }`}
             />
             <span className="text-gray-300 font-mono text-[11px]">
-              {isWrongNetwork ? "Wrong Network" : "Botchain Testnet"}
+              {isWrongNetwork ? "Wrong Network" : "Botchain Mainnet"}
             </span>
           </div>
 
@@ -98,7 +97,7 @@ export function Header() {
             </button>
           ) : isWrongNetwork ? (
             <button
-              onClick={() => switchChain({ chainId: botchainTestnet.id })}
+              onClick={() => switchChain({ chainId: botchainMainnet.id })}
               className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-amber-600/90 hover:bg-amber-500 text-white font-medium text-xs transition-colors"
             >
               <Layers className="w-3.5 h-3.5" />
@@ -148,7 +147,7 @@ export function Header() {
                     </button>
 
                     <a
-                      href={`https://scan.bohr.life/address/${address}`}
+                      href={`https://scan.botchain.ai/address/${address}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="w-full flex items-center justify-between px-3 py-2 rounded-lg hover:bg-charcoal-800 text-gray-300 hover:text-white transition-colors"
@@ -179,4 +178,3 @@ export function Header() {
     </header>
   );
 }
-
